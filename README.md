@@ -7,3 +7,6 @@ Nuclear Fission Reactor implementation and design of nonlinear optimal controlle
 **Usage**
 ---
 This implementation uses MATLAB's Control System ToolBox, ran using MATLAB_R2025b and Simulink
+
+**Process Model**
+---
