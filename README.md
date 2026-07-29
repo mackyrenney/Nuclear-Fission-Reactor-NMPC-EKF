@@ -10,3 +10,8 @@ This implementation uses MATLAB's Control System ToolBox, ran using MATLAB_R2025
 
 **Process Model**
 ---
+
+**Model Piping and Instrumentation Diagram**
+---
+
+### Dynamic System of Equations
