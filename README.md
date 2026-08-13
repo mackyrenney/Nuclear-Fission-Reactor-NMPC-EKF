@@ -14,3 +14,15 @@ This implementation uses MATLAB's Control System ToolBox, ran using MATLAB_R2025
 **Model Piping and Instrumentation Diagram**
 ---
 '''
+
+Consider a model of a nuclear fission reactor given by:
+
+\begin{subequations}
+\begin{align}
+\dot{C}_n(t) &= \frac{\rho(t) - \beta}{\Lambda} C_n(t) + \lambda C_p(t), \\
+\dot{C}_p(t) &= \frac{\beta}{\Lambda} C_n(t) - \lambda C_p(t), \\
+\dot{\rho}_{th}(t) &= -\kappa H C_n(t),
+\end{align}
+\end{subequations}
+
+Where $C_n$ is the concentration of neutrons, $C_p$ is the concentration of so-called neutron precursors (essentially, fission products that emit neutrons at a relatively slow rate), and $\rho_{th}$ is the thermal reactivity. The reactivity given by.
