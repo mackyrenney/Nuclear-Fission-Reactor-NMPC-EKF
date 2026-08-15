@@ -55,3 +55,11 @@ F(x(t)) = \begin{bmatrix}
 0
 \end{bmatrix}
 \]
+
+
+
+$$\frac{\partial F}{\partial x}(x(t)) = \begin{bmatrix}
+\frac{\rho_{th}(t) - \beta}{\Lambda} & \lambda & \frac{1}{\Lambda} C_n(t) \\
+\frac{\beta}{\Lambda} & -\lambda & 0 \\
+-\kappa H & 0 & 0
+\end{bmatrix}, \qquad \frac{\partial f}{\partial x}(x_t) = I + \frac{\partial F}{\partial x}(x_t)\Delta t.$$
