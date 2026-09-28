@@ -10,10 +10,6 @@ This implementation uses MATLAB's Control System ToolBox, ran using MATLAB_R2025
 
 **Process Model**
 ---
-
-**Model Piping and Instrumentation Diagram**
----
-'''
 The continuous-time model the nuclear fission reactor are given by:
 
 $$
@@ -23,6 +19,13 @@ $$
 \dot{\rho}_{th}(t) &= -\kappa H C_n(t)
 \end{aligned}
 $$
+
+Where $C_n$ is the concentration of neutrons, $C_p$ is the concentration of neutron precursors (neutron emitting fission product), and $\rho_{th}$ is the thermal reactivity.
+
+
+**Model Piping and Instrumentation Diagram**
+---
+
 
 Where $C_n$ is the concentration of neutrons, $C_p$ is the concentration of so-called neutron precursors (essentially, fission products that emit neutrons at a relatively slow rate), and $\rho_{th}$ is the thermal reactivity. The reactivity given by.
 
