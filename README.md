@@ -24,12 +24,14 @@ Where $C_n$ is the concentration of neutrons, $C_p$ is the concentration of neut
 
 
 ``` matlab
-% Process variables
-kappa = 0.000005    (delayed neutron fraction)
-lambda = 3          (precursor decay constant)
-Lambda = 0.000005   (product temperature)
-Beta = 0.0065       (circulating temperature)
-H = 0.05            (heating coefficient)
+% Parameter variables
+par.kappa0 = 5e-5;         % thermal feedback coefficient
+par.lambda = 3;            % precursor decay constant   [1/s]
+par.Lambda = 5e-5;         % neutron generation time    [s]
+par.beta   = 0.0065;       % delayed neutron fraction   [-]
+par.Hth    = 0.05;         % heating coefficient        
+par.dt     = 1e-3;         % Euler step = sample time   [s]
+dt         = par.dt;
 ```
 
 **Model Piping and Instrumentation Diagram**
