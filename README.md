@@ -59,6 +59,11 @@ C_p(t) \\
 \end{bmatrix}
 $$
 
+$C_n(t)$ is presented as an actuated state, where the neutron population state dynamics are balanced (1) Neutron Net Rate: thermal feedback ($p_{th}$) and delayed neutron precursors $\beta$, then scaled by the neutron generation time ($\Lambda$); (2) Delayed neutron source: nuetron release of radioactive decaying precursor via decay constant $\lambda$. $C_n(t)$ rate of change is produced by external control reactivity ($u(t)=\rho_{ext}$) and scaled by the current $\frac{C_n(t)}{\Lambda}$.
+
+$C_p(t)$ is a drift only state where there is no explicit control coupling. The $C_p(t)$ state captures precursor isotope generation via fission $\frac{\beta}{\Lambda} C_n(t)$ and loss via radioactive decay scaled by $-\lambda$.
+
+$\rho_{th}(t)$ is also a drift only state where there is no explicit control coupling. The $\rho_{th}(t)$ state dynamics defines heat output driving thermal feedback through negative temperature coefficient ($-\kappa$). For this simple control design, moving control rods $u(t)$ only indirectly affects thermal reactivity. Adding alternative mechanisms that control core temperature, i.e. cooling water, has not been included in this design.
 
 **Model Piping and Instrumentation Diagram**
 ---
