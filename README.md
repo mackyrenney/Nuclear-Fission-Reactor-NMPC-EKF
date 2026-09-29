@@ -67,7 +67,7 @@ $$
 ---
 The model differential equations are discretized via Euler's explicit method. 
 
-$$x_{t+1}=\underbrace{x_t+\Delta t\ \varphi(x_t;\theta)}_{\varphi_d}+\underbrace{\Delta t\ \psi(x_t;\theta)}_{\psi_d}\ u_t$$
+$$x_{t+1}=\underbrace{x_t+\Delta t\ \varphi(x_t;\theta)}_{\varphi_d}+\underbrace{\Delta t\ \psi(x_t;\theta)}_{\psi_d}\ u_t + G w_t$$
 
 To the accommodate model's "stiffness", the time step (dt) must be small enough to be within the stable limit. Therefore, the largest adequate Euler time step must satisfy a stable eigenvalue, $|1 + \Delta t\,\lambda_i| < 1$, within the stable limit, $\Delta t < -2\\mathrm{Re}\\lambda_i / |\lambda_i|^2$, without oscillations or blowups. For real eigenvalues this reduces to $\Delta t < 2/|\lambda_i|$ (i.e. the step must be shorter than twice the fastest time constant).
 
