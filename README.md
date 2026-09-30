@@ -36,7 +36,7 @@ dt         = par.dt;
 
 The fission differential equations are then represented as a control-affine system:
 
-$$\dot{x}(t) = \varphi(x(t); \theta) + \psi(x(t); \theta)\, u(t)$$
+$$\dot{x}(t) = \varphi(x(t); \theta) + \psi(x(t); \theta)\ u(t)$$
 
 where $\varphi(x(t); \theta)$ defines the state dynamics of the system wrt model parameters and $\psi(x(t); \theta)$ maps the controlled output dynamics wrt model parameters.
 
