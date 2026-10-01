@@ -1,6 +1,6 @@
 **Nuclear Fission Reactor: Multivariable Control Design and State Estimation**
 ---
-Nuclear Fission Reactor implementation and design of nonlinear optimal model predictive controller (NMPC) and Extended Kalman Filter (EKF) for state estimation was built in MATLAB/Simulink.
+Nuclear Fission Reactor implementation and design of nonlinear model predictive controller (NMPC) and Extended Kalman Filter (EKF) for state estimation was built in MATLAB/Simulink.
   * Semi-linearization Approach to NMPC
   * State Estimation using EKF
 
