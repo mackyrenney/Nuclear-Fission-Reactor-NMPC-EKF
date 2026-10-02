@@ -80,7 +80,12 @@ To accommodate the model's "stiffness", the time step (dt) must be small enough 
 **Extended Kalman Filter**
 ---
 
+
 **Nonlinear Model Predictive Controller**
 ---
 
+
+**Reactor: Simulink Design**
+---
+<img width="2954" height="632" alt="Screenshot 2026-10-02 at 7 17 48 PM" src="https://github.com/user-attachments/assets/fe01428d-1e77-4e53-b817-8426330a6cf2" />
 
