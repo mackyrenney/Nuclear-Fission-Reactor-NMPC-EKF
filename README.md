@@ -79,7 +79,7 @@ To accommodate the model's "stiffness", the time step (dt) must be small enough 
 
 **Extended Kalman Filter**
 ---
-
+The extended kalman filter is a joint state and parameter estimation filter.
 
 **Nonlinear Model Predictive Controller**
 ---
