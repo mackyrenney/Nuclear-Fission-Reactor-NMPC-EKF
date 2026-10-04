@@ -130,18 +130,18 @@ The Measurement Update is given by:
 $$
 \begin{array}{ll}
 \textit{Predicted Output} & \hat{y}_{t|t-1} = C \hat{x}_{t|t-1} + D u_{t-1} \\
-\textit{Kalman Gains} & K_x = (P_{xx} C^T + P_{x\theta} M^T) S_t^{-1} \\ 
-& K_\theta = (P_{\theta x} C^T + P_{\theta\theta} M^T) S_t^{-1} \\
+\textit{Kalman Gains} & K_x = (P_{xx,t|t-1} C^T + P_{x\theta,t|t-1} M^T) S_t^{-1} \\ 
+& K_\theta = (P_{\theta x,t|t-1} C^T + P_{\theta\theta,t|t-1} M^T) S_t^{-1} \\
 \textit{Filtered Estimate} & \hat{x}_{t|t} = \hat{x}_{t|t-1} + K_x (y_t - \hat{y}_{t|t-1}) \\
 & \hat{\theta}_{t|t} = \hat{\theta}_{t|t-1} + K_\theta (y_t - \hat{y}_{t|t-1}) \\
-\textit{Covariances} & P_{xx,t|t} = P_{xx} - K_x (C P_{xx} + M P_{\theta x}) \\
-& P_{x\theta,t|t} = P_{x\theta} - K_x (C P_{x\theta} + M P_{\theta\theta}) \\
-& P_{\theta\theta,t|t} = P_{\theta\theta} - K_\theta (C P_{x\theta} + M P_{\theta\theta})
+\textit{Covariances} & P_{xx,t|t} = P_{xx,t|t-1} - K_x (C P_{xx,t|t-1} + M P_{\theta x,t|t-1}) \\
+& P_{x\theta,t|t} = P_{x\theta,t|t-1} - K_x (C P_{x\theta,t|t-1} + M P_{\theta\theta,t|t-1}) \\
+& P_{\theta\theta,t|t} = P_{\theta\theta,t|t-1} - K_\theta (C P_{x\theta,t|t-1} + M P_{\theta\theta,t|t-1})
 \end{array}
 $$
 $$
 
-where the innovation covariance is denoted by $S_t = C P_{xx} C^T + C P_{x\theta} M^T + M P_{\theta x} C^T + M P_{\theta\theta} M^T + F F^T$.
+where the innovation covariance is denoted by $S_t = C P_{xx,t|t-1} C^T + C P_{x\theta,t|t-1} M^T + M P_{\theta x,t|t-1} C^T + M P_{\theta\theta,t|t-1} M^T + F F^T$.
 
 The Time Update is given by: 
 
@@ -149,9 +149,9 @@ $$
 \begin{array}{ll}
 \textit{Predicted Estimate} & \hat{x}_{t+1|t} = \varphi_d(\hat{x}_{t|t}; \hat{\theta}) + \psi_d(\hat{x}_{t|t}; \hat{\theta}) u_t \\
 &\hat{\theta}_{t+1|t} = \hat{\theta}_{t|t} \\
-\textit{Covariances} & P_{xx,t+1|t} = A P_{xx} A^T + A P_{x\theta} S^T + S P_{\theta x} A^T + S P_{\theta\theta} S^T + G G^T \\
-& P_{x\theta,t+1|t} = A P_{x\theta} + S P_{\theta\theta} \\
-& P_{\theta\theta,t+1|t} = P_{\theta\theta} + H H^T
+\textit{Covariances} & P_{xx,t+1|t} = A P_{xx,t|t} A^T + A P_{x\theta,t|t} S^T + S P_{\theta x,t|t} A^T + S P_{\theta\theta,t|t} S^T + G G^T \\
+& P_{x\theta,t+1|t} = A P_{x\theta,t|t} + S P_{\theta\theta,t|t} \\
+& P_{\theta\theta,t+1|t} = P_{\theta\theta,t|t} + H H^T
 \end{array}
 $$
 
