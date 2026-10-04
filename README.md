@@ -16,7 +16,7 @@ $$
 \begin{aligned}
 \dot{C}_n(t) &= \frac{\rho(t) - \beta}{\Lambda} C_n(t) + \lambda C_p(t) \\
 \dot{C}_p(t) &= \frac{\beta}{\Lambda} C_n(t) - \lambda C_p(t) \\
-\dot{\rho}_{th}(t) &= -\kappa H C_n(t)
+\dot{\rho}_{th}(t) &= -\kappa H_T C_n(t)
 \end{aligned}
 $$
 
@@ -49,7 +49,7 @@ C_p(t) \\
 \varphi(x(t);\theta) = \begin{bmatrix}
 \frac{\rho_{th}(t) - \beta}{\Lambda} C_n(t) + \lambda C_p(t) \\
 \frac{\beta}{\Lambda} C_n(t) - \lambda C_p(t) \\
--\kappa H C_n(t)
+-\kappa H_T C_n(t)
 \end{bmatrix}
 \\ \qquad
 \psi(x(t);\theta) = \begin{bmatrix}
@@ -95,6 +95,27 @@ C=\begin{bmatrix}1&0&0 \\
 D=\begin{bmatrix}0&0 \\
 0&0\end{bmatrix}\quad$$
 
+MAKE NOTE ABOUT SEMILINEARIZATION AND LINEAR MEASUREMENT TERMS RELATED TO JACOBIANS
+
+The model Jacobians are then states as the following:
+
+$$\begin{aligned}
+A = \frac{\partial f}{\partial x} &= I + \Delta t \begin{bmatrix} \frac{\rho_{th}-\beta+u}{\Lambda} & \lambda & \frac{C_n}{\Lambda} \\ 
+\frac{\beta}{\Lambda} & -\lambda & 0 \\ 
+-\kappa_0\theta H_T & 0 & 0 \end{bmatrix} \\ \quad \quad
+B = \psi_d &= \Delta t \begin{bmatrix} \frac{C_n}{\Lambda} \\ 
+0 \\ 
+0 \end{bmatrix} \\ \quad \quad
+S = \frac{\partial f}{\partial \theta} &= \Delta t \begin{bmatrix} 0 \\ 
+0 \\ 
+-\kappa_0 H_T C_n \end{bmatrix}\end{aligned}$$
+
+$$\bar A=\begin{bmatrix}A&S\\
+0&I\end{bmatrix},\quad \bar B=\begin{bmatrix}B\\
+0\end{bmatrix},\quad \bar 
+G=\begin{bmatrix}G&0\\
+0&H\end{bmatrix},\quad 
+\bar C=\begin{bmatrix}C&M\end{bmatrix},\quad \bar D=D,\quad \bar F=F$$
 
 **Extended Kalman Filter**
 ---
