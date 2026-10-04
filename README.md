@@ -76,6 +76,25 @@ $$x_{t+1}=\underbrace{x_t+\Delta t\ \varphi(x_t;\theta)}_{\varphi_d}+\underbrace
 
 To accommodate the model's "stiffness", the time step (dt) must be small enough to be within the stable limit. Therefore, the largest adequate Euler time step must satisfy a stable eigenvalue, $|1 + \Delta t\,\lambda_i| < 1$, within the stable limit, $\Delta t < -2\\mathrm{Re}\\lambda_i / |\lambda_i|^2$, without oscillations or blowups. For real eigenvalues this reduces to $\Delta t < 2/|\lambda_i|$ (i.e. the step must be shorter than twice the fastest time constant).
 
+**Stochastic state space model**
+---
+The following stochastic state space model is expressed as a parameter model which feeds the EKF smoothly. Several optional model parameters are left 0 or undefined, but can be configured using the *cfg.* command within Matlab. 
+
+$$\begin{aligned}
+x_{t+1} &= \varphi_d(x_t;\theta_t)+\psi_d(x_t;\theta_t) u_t + G w_t, & w_t&\sim N(0,I_3)\\
+\theta_{t+1} &= \theta_t + H \eta_t, & \eta_t&\sim N(0,1)\\
+y_t &= C x_t + D u_t + F v_t, & v_t&\sim N(0,I_2)
+\end{aligned}$$
+
+Process Noise shaping matrix $G$ and measurement noise shaping matrix $F$ are expressed using Cholesky Factorization to clearly identify the covariance matrix representation within the EKF. The direct-feedthrough matrix $D$ is left 0 because control inputs must pass through the state dynamics of the system.
+
+$$G=\mathrm{chol}(R_v)=\mathrm{diag}(1,1,10^{-4}),\quad
+F=\mathrm{chol}(R_e)=\mathrm{diag}(\sqrt{0.1},\sqrt{0.1}),\quad
+C=\begin{bmatrix}1&0&0 \\
+0&1&0\end{bmatrix},\quad 
+D=\begin{bmatrix}0&0 \\
+0&0\end{bmatrix}\quad$$
+
 
 **Extended Kalman Filter**
 ---
