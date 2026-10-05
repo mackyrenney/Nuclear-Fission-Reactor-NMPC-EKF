@@ -141,7 +141,7 @@ $$
 $$
 $$
 
-where the innovation covariance is denoted by $S_t = C P_{xx,t|t-1} C^T + C P_{x\theta,t|t-1} M^T + M P_{\theta x,t|t-1} C^T + M P_{\theta\theta,t|t-1} M^T + F F^T$.
+with innovation covariance $S_t = C P_{xx,t|t-1} C^T + C P_{x\theta,t|t-1} M^T + M P_{\theta x,t|t-1} C^T + M P_{\theta\theta,t|t-1} M^T + F F^T$.
 
 The Time Update is given by: 
 
