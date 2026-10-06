@@ -157,7 +157,7 @@ $$
 
 **Nonlinear Model Predictive Controller**
 ---
-
+A semilinearization method was used to approach the NMPC
 
 **Reactor: Simulink Design**
 ---
