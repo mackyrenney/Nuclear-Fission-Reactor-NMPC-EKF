@@ -161,5 +161,4 @@ A semilinearization method was used to approach the NMPC
 
 **Reactor: Simulink Design**
 ---
-<img width="2954" height="632" alt="Screenshot 2026-10-02 at 7 17 48 PM" src="https://github.com/user-attachments/assets/fe01428d-1e77-4e53-b817-8426330a6cf2" />
-<img width="3006" height="668" alt="Screenshot 2026-10-08 at 5 00 41 PM" src="https://github.com/user-attachments/assets/e56d820c-960b-4ded-ae82-4be95dff4c10" />
+<img width="2928" height="632" alt="Screenshot 2026-10-08 at 5 06 17 PM" src="https://github.com/user-attachments/assets/00a85894-8b80-4dfb-81f3-7f1188aca2ac" />
