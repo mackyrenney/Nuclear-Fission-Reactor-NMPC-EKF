@@ -1,4 +1,8 @@
-%   Discrete-time process (Euler step plant.dt):
+%% reactor_plant_sfun.m
+%  Simulink system set-up: The process model  
+%
+%
+% Discrete-time process (Euler step plant.dt):
 %       x_{t+1} = x_t + dt*phi(x_t) + dt*psi(x_t)*u_t + G*w_t,  w_t ~ N(0,I3)
 %
 %   S-function block settings:
