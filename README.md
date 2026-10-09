@@ -8,6 +8,10 @@ Nuclear Fission Reactor implementation and design of nonlinear model predictive 
 ---
 This implementation uses MATLAB's Control System ToolBox, ran using MATLAB_R2025b and Simulink
 
+1. Open reactor_nmpc_ekf.slx Simulink Document
+2. Run reactor_init.m file
+3. Adapt the model with ... and analyze structures results with ...
+
 **Process Model**
 ---
 The continuous-time model equations are given by:
@@ -65,9 +69,6 @@ $C_p(t)$ is a drift only state where there is no explicit control coupling. The 
 
 $\rho_{th}(t)$ is also a drift only state where there is no explicit control coupling. The $\rho_{th}(t)$ state dynamics defines heat output driving thermal feedback through negative temperature coefficient ($-\kappa$). For this simple control design, moving control rods $u(t)$ only indirectly affects thermal reactivity. Adding alternative mechanisms that control core temperature, i.e. cooling water, has not been included in this design.
 
-**Model Piping and Instrumentation Diagram**
----
-
 **Discretization**
 ---
 The model differential equations are discretized via Euler's explicit method. 
@@ -117,8 +118,7 @@ G=\begin{bmatrix}G&0\\
 
 **Semilinearization Notes**
 ---
-NOTE ABOUT SEMILINEARIZATION AND LINEAR MEASUREMENT TERMS RELATED TO JACOBIANS
-
+Semilinearization was used to control the state ($C_n$) around a nominal trajectory $(\bar x_k,\bar u_k)$
 
 
 **Extended Kalman Filter**
