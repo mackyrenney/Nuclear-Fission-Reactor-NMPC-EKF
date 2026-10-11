@@ -125,6 +125,8 @@ Semilinearization was used to control the state ($C_n$) around a nominal traject
 ---
 The Extended Kalman Filter is a joint state and parameter estimation filter. 
 
+the Joseph form was implemented optionally under:
+
 The Measurement Update is given by:
 
 $$
@@ -158,6 +160,8 @@ $$
 **Nonlinear Model Predictive Controller**
 ---
 A semilinearization method was used to approach the NMPC
+
+
 
 **Reactor: Simulink Design**
 ---
