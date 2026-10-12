@@ -8,7 +8,7 @@ Nuclear Fission Reactor implementation and design of nonlinear model predictive 
 ---
 This implementation uses MATLAB's Control System ToolBox, ran using MATLAB_R2025b and Simulink
 
-1. Open reactor_nmpc_ekf.slx Simulink Document
+1. Open reactor_nmpc_ekf.slx Simulink 
 2. Run reactor_init.m file
 3. Adapt the model with ... and analyze structures results with ...
 
