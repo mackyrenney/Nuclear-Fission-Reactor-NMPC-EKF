@@ -33,15 +33,15 @@ par.dt = 1e-3;
 dt = par.dt;
 
 
-nx = 3;
-nu = 1;
-ny = 2;
-nz = 1;
+nx = 3;                     % x = [Cn; Cp; rho_th]
+nu = 1;                     % u = rho_ext
+ny = 2;                     % y = [Cn; Cp] measured outputs
+nz = 1;                     % z = Cn controlled ouput 
 ntheta = 1;
 
-%% Stochastic State space model
-Rv = diag([1, 1, 1e-8]);
-Re = diag([0.1, 0.1]);
+%% Stochastic state space model
+Rv = diag([1, 1, 1e-8]);    % process noise covariance
+Re = diag([0.1, 0.1]);      % measurement noise covariance
 
 G = chol(Rv, 'lower');
 F = chol(Re, 'lower');
@@ -51,3 +51,22 @@ C = [1 0 0;
 D = zeros(ny, nu);
 M = zeros(ny, ntheta);
 Co = [1 0 0];
+
+
+%% Discritization (explicit Euler)
+
+x0_true = [1000; 0; par.beta];
+
+
+%% S-function and Sensor
+plant.kappa = par.kappa0;
+plant.lambda = par.lambda;
+plant.Lambda = par.Lambda;
+plant.Hth = par.Hth;
+plant.beta = par.beta;
+plant.dt = par.dt;
+plant.G = G;
+plant.C = C;
+plant.D = D;
+plant.F = F;
+
