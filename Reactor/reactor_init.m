@@ -56,7 +56,7 @@ Co = [1 0 0];
 %% Discritization (explicit Euler)
 
 x0_true = [1000; 0; par.beta];
-
+x_ss = [cfg.r_ref; par.beta/(par.Lambda*par.lambda)*cfg.r_ref; 0];
 
 %% S-function and Sensor
 plant.kappa = par.kappa0;
@@ -70,3 +70,6 @@ plant.C = C;
 plant.D = D;
 plant.F = F;
 
+%% Simulation data
+Tend = cfg.Tend;
+Nsim = round(Tend/dt);
