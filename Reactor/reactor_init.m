@@ -20,8 +20,9 @@ cfg.seed = 42;
 cfg.r_ref = 1e4;
 cfg.r_final = 1e4;
 cfg.t_step = 0.5;
-
-
+cfg.est_case = 1; % EKF initial estimate: 1 = true x0
+cfg.est_theta = 0; % 1 = joint estimation of theta (kappa factor)
+cfg.theta_true  = 1.0;     % plant kappa = theta_true*kappa0
 
 %% Physical and time parameters
 par.kappa0 = 5e-5;
