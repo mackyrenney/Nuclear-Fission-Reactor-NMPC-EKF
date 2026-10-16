@@ -70,6 +70,28 @@ plant.C = C;
 plant.D = D;
 plant.F = F;
 
+%% EKF (joint state  and parameter estimation)
+ekf.par    = par;          % model parameters (theta scales kappa0)
+ekf.C      = C;
+ekf.D      = D;
+ekf.F      = F;
+ekf.M      = M;
+ekf.G      = G;
+ekf.H      = H;
+ekf.joseph = 0;            % 1 = Joseph-form covariance update
+
+switch cfg.est_case
+    case 1   % true initial state, small prior covariance
+        x0_est = x0_true;
+        P0xx   = diag([1, 1, 1e-8]);
+    otherwise   % wrong initial state, prior covariance that covers the error
+        x0_est = [800; 200; 0];
+        P0xx   = diag([200^2, 200^2, (2*par.beta)^2]);
+end
+xbar0 = [x0_est; theta0];                      % Unit Delay for xbar_{0|-1}
+Pbar0 = blkdiag(P0xx, P0thth);                 % Unit Delay for P_{0|-1}
+nxbar = nx + ntheta;
+
 %% Simulation data
 Tend = cfg.Tend;
 Nsim = round(Tend/dt);
