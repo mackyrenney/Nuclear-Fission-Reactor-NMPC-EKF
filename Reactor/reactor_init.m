@@ -95,3 +95,8 @@ nxbar = nx + ntheta;
 %% Simulation data
 Tend = cfg.Tend;
 Nsim = round(Tend/dt);
+t_vec = (0:Nsim)'*dt;
+
+rng(cfg.seed);                                   % reproducible noise
+W = cfg.proc_noise*randn(nx, Nsim+1);            % w_t ~ N(0, I3)
+V = cfg.meas_noise*randn(ny, Nsim+1);            % v_t ~ N(0, I2)
