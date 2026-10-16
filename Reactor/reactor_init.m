@@ -52,6 +52,15 @@ D = zeros(ny, nu);
 M = zeros(ny, ntheta);
 Co = [1 0 0];
 
+theta0 = 1;                % nominal parameter (kappa = kappa0)
+if cfg.est_theta
+    H       = 1e-4;        % random-walk std of theta per step
+    P0thth  = 0.3^2;       % prior uncertainty of theta (30 %)
+else
+    H       = zeros(ntheta);   % frozen parameter: H = 0, P_thth = 0
+    P0thth  = zeros(ntheta);   % plain 3-state EKF
+end
+
 
 %% Discritization (explicit Euler)
 
