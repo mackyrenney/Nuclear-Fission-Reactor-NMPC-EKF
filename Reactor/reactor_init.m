@@ -14,10 +14,10 @@
 %% User settings
 cfg.Tend = 1.0; # simulation in length (seconds)
 cfg.loop_mode = 1; 
-cfg.proc_noise = 1;
-cfg.meas_noise = 1;
-cfg.seed = 42;
-cfg.r_ref = 1e4;
+cfg.proc_noise = 1; 
+cfg.meas_noise = 1; 
+cfg.seed = 42;   
+cfg.r_ref = 1e4; # steady state reference point
 cfg.r_final = 1e4;
 cfg.t_step = 0.5;
 cfg.est_case = 1; % EKF initial estimate: 1 = true x0
@@ -82,7 +82,7 @@ plant.F = F;
 
 %% EKF (joint state  and parameter estimation)
 ekf.par    = par;          % model parameters (theta scales kappa0)
-ekf.C      = C;
+ekf.C      = C;            
 ekf.D      = D;
 ekf.F      = F;
 ekf.M      = M;
