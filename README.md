@@ -10,7 +10,7 @@ This implementation uses MATLAB's Control System ToolBox, ran using MATLAB_R2025
 
 1. Open reactor_nmpc_ekf.slx Simulink 
 2. Run reactor_init.m file
-3. Adapt the model with ... and analyze structures results with ... read
+3. Adapt the model with ... and analyze structures results with ..
 
 **Process Model**
 ---
