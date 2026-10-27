@@ -38,3 +38,46 @@ F  = ekf.F;
 M  = ekf.M;
 nx   = size(C, 2);
 nbar = numel(xbar_p);
+
+
+x = xbar_p(1:nx);
+th = xbar_p(nx+1:nbar);
+Pxx = Pbar_p(1:nx, 1:nx);
+Pxth = Pbar_p(1:nx, nx+1:nbar);
+Pthx = Pbar_p(nx+1:nbar, 1:nx);
+Pthth = Pbar_p(nx+1:nbar, nx+1:nbar);
+
+% predicted output and innovation
+yhat = C*x + D*u(:);
+e = y(:) - yhat;
+
+% innovation covariance
+St = C*Pxx*C' + C*Pxth*M' + M*Pthx*C' + M*Pthth*M' + F*F';
+St = 0.5*(St + St'); % force symmetry
+
+% Kalman gains
+Kx = (Pxx*C' + Pxth*M') / St;
+Kth = (Pthx*C' + Pthth*M') / St;
+
+% Filtered estimates
+x_f = x + Kx*e;
+th_f = th + Kth*e;
+
+% Filtered covariances with joseph form option
+if ekf.joseph > 0 % joseph form (I - K Cbar) P (I - K Cbar) + K F F' K'
+  Kbar = [Kx; Kth];
+  Cbar = [C, M];
+  IKC = eye(nbar) - Kbar*Cbar;
+  Pbar_f = IKC*Pbar_p*IKC' + Kbar*(F*F')*Kbar';
+else
+  Pxx_f = Pxx - Kx*(C*Pxx + M*Pthx);
+  Pxth_f = Pxth - Kx*(C*Pxth + M*Pthth);
+  Pthth_f = Pthth - Kth*(C*Pxth + M*Pthth);
+  Pbar_f = [Pxx_f, Pxth_f;
+            Pxth_f, Pthth_f];
+end
+Pbar_f = 0.5*(Pbar_f * Pbar_f'); % force symmetry
+xbar_f = [x_f; th_f];
+end
+
+
