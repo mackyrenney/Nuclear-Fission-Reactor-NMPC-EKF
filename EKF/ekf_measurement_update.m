@@ -76,7 +76,7 @@ else
   Pbar_f = [Pxx_f, Pxth_f;
             Pxth_f, Pthth_f];
 end
-Pbar_f = 0.5*(Pbar_f * Pbar_f'); % force symmetry
+Pbar_f = 0.5*(Pbar_f + Pbar_f'); % force symmetry
 xbar_f = [x_f; th_f];
 end
 
