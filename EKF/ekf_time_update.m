@@ -26,3 +26,27 @@ G = ekf.G;
 H = ekf.H;
 nx = size(G,1);
 nbar = numel(xbar_f);
+
+% augmentation
+x = xbar_f(1:nx);
+th = xbar_f(nx+1:nbar);
+Pxx = Pbar_f(1:nx, 1:nx);
+Pxth = Pbar_f(1:nx, nx+1;nbar);
+Pthx = Pbar_f(nx+1:nbar, 1:nx);
+Pthth = Pbar_f(nx+1:nbar, nx+1:nbar);
+
+% Jacobians at the filtered estimate
+[A, ~, S] = reactor_jacobians(x, u, th, ekf.par);
+
+% state and parameter prediction
+x_p = reactor_step(x, u, th, ekf.par);
+th_p = th;
+
+% covariance prediction
+Pxx_p = A*Pxx*A' + A*Pxth*S' + S*Pthx*A' + S*Pthth*S' + G*G';
+Pxth_p = A*Pxth + S*Pthth;
+Pthth_p = Pthth + H*H';
+Pbar_p = [Pxx_p, Pxth_p; Pxth_p', Pthth_p];
+Pbar_p = 0.5*(Pbar_p + Pbar_p'); % force symmetry
+xbar_p = [x_p; th_p];
+end
