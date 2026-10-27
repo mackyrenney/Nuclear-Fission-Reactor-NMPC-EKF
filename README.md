@@ -125,9 +125,13 @@ Semilinearization was used to control the state ($C_n$) around a nominal traject
 ---
 The Extended Kalman Filter is a joint state and parameter estimation filter. 
 
-the Joseph form was implemented optionally under:
-
 The Measurement Update is given by:
+
+``` matlab
+function [xbar_f, P_f, e, St] = EKF_MU(xbar_p, P_p, y, u_prev, ekf)
+   [xbar_f, P_f, ~, e, St] = ekf_measurement_update(xbar_p, P_p, y, u_prev, ekf);
+end
+```
 
 $$
 \begin{array}{ll}
@@ -147,6 +151,12 @@ with innovation covariance $S_t = C P_{xx,t|t-1} C^T + C P_{x\theta,t|t-1} M^T +
 
 The Time Update is given by: 
 
+``` matlab
+function [xbar_next, P_next] = EKF_TU(xbar_f, P_f, u, ekf)
+   [xbar_next, P_next] = ekf_time_update(xbar_f, P_f, u, ekf);
+end
+```
+
 $$
 \begin{array}{ll}
 \textit{Predicted Estimate} & \hat{x}_{t+1|t} = \varphi_d(\hat{x}_{t|t}; \hat{\theta}) + \psi_d(\hat{x}_{t|t}; \hat{\theta}) u_t \\
@@ -156,6 +166,16 @@ $$
 & P_{\theta\theta,t+1|t} = P_{\theta\theta,t|t} + H H^T
 \end{array}
 $$
+
+*Note on the Joseph Form*
+
+The Joseph Form covariance update is added to ensure nearly symmetric result: 
+
+``` Pbar_f = IKC*Pbar_p*IKC' + Kbar*(F*F')*Kbar'; ```
+
+and the computationally cheaper option is implemented as the primary symmetric forcing routine, but can be changed (ekf.joseph = 1) if antisymmetric results develop.
+
+``` Pbar_f = 0.5*(Pbar_f + Pbar_f'); ```
 
 **Nonlinear Model Predictive Controller**
 ---
