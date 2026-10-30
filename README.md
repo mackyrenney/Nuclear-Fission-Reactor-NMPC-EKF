@@ -118,7 +118,12 @@ G=\begin{bmatrix}G&0\\
 
 **Semilinearization Notes**
 ---
-Semilinearization was used to control the state ($C_n$) around a nominal trajectory $(\bar x_k,\bar u_k)$
+A semilinearization was used for the control-affine reactor model. Because the model input gain $$\psi(x_t)$$ depends on the state, the predicted outputs are non-linear in the input sequence $$U$$. The MPC cost is then not quadratic in $$U$$, and the problem cannot be solved as a quadratic program (QP). Semilinearization fixes this by approximating the model around a nominal trajectory ($$X^-, \bar{U}$$) with the linear time varying model:
+
+$$x_{k+1} = A_k x_k + B_k u_k + c_k$$
+
+
+
 
 
 **Extended Kalman Filter**
