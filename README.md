@@ -118,29 +118,29 @@ G=\begin{bmatrix}G&0\\
 
 **Semilinearization Notes**
 ---
-A semilinearization is used for the control-affine reactor model
+A semilinearization is used for control sequences of the control-affine reactor model
 
 $$
-x_{k+1} = \varphi_d(x_k) + \psi_d(x_k)\,u_k .
+x_{t+1} = \varphi_d(x_t) + \psi_d(x_t)\,u_t 
 $$
 
-Because the input gain $\psi_d(x_k)$ depends on the state, the predicted outputs are nonlinear in the input sequence $U$. The MPC cost is then not quadratic in $U$, and the problem cannot be solved as a quadratic program (QP). Semilinearization fixes this by approximating the model around a nominal trajectory $(\bar{X}, \bar{U})$ with the linear time-varying model
+Because the input gain $\psi_d(x_k)$ depends on the state, the predicted outputs are nonlinear in the input sequence $U$. The MPC cost is then not quadratic in $U$, and the problem cannot be solved as a quadratic program (QP). Semilinearization fixes this by approximating the model around a nominal trajectory $(\bar{X}, \bar{U})$ with the linear time-varying model, where $$k$$ is the step inside the prediction horizon
 
 $$
-x_{k+1} = A_k x_k + B_k u_k + c_k ,
+x_{k+1} = A_k x_k + B_k u_k + c_k ,$$ 
 $$
 
 $$
 A_k = \frac{\partial \varphi_d}{\partial x}(\bar{x}_k), \qquad
 B_k = \psi_d(\bar{x}_k), \qquad
-c_k = \varphi_d(\bar{x}_k) + \psi_d(\bar{x}_k)\,\bar{u}_k - A_k \bar{x}_k - B_k \bar{u}_k .
+c_k = \varphi_d(\bar{x}_k) + \psi_d(\bar{x}_k)\,\bar{u}_k - A_k \bar{x}_k - B_k \bar{u}_k 
 $$
 
-The offset $c_k$ makes the model reproduce the nonlinear trajectory exactly at $U = \bar{U}$. The difference from full linearization is that the term $\frac{\partial \psi_d}{\partial x}(\bar{x}_k)\,\bar{u}_k$ is left out of $A_k$:
+The offset $c_k$ makes the model reproduce the nonlinear trajectory exactly at $U = \bar{U}$. The difference from full linearization is that the term $\frac{\partial \psi_d}{\partial x}(\bar{x}_k)\ \bar{u}_k$ is left out of $A_k$:
 
 $$
 A_k^{\mathrm{full}} = \frac{\partial f}{\partial x}(\bar{x}_k, \bar{u}_k)
-= A_k + \frac{\partial \psi_d}{\partial x}(\bar{x}_k)\,\bar{u}_k ,
+= A_k + \frac{\partial \psi_d}{\partial x}(\bar{x}_k)\ \bar{u}_k 
 $$
 
 i.e. the model ignores that a change in the state also changes how strongly the input acts. This requires only $\partial \varphi_d / \partial x$, the prediction is still exact at the nominal point, and only its sensitivity to $U$ is approximate.
