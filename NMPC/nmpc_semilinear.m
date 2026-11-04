@@ -13,6 +13,8 @@ else
     theta = mpc.theta0;
 end
 
+Ubar = [U_prev(nu+1:NU); U_prev(NU-nu+1:NU)];
+[Jbar, ~] = nl_cost(x0, theta, Ubar, r, u_prev, mpc);
 
 for it = 1:mpc.n_sl
     qp = nmpc_build_qp(x0, theta, Ubar, r, u_prev, mpc);
