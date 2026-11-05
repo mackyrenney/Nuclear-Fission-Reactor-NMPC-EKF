@@ -34,3 +34,28 @@ for it = 1:mpc.n_sl
     Ustar = qp.su*Ut;                   % unscale
     dUfull = Ustar - Ubar;
     dU     = max(abs(dUfull));
+
+
+function [J, Z] = nl_cost(x0, theta, U, r, u_prev, mpc)
+nz = size(mpc.Co, 1);
+nu = numel(u_prev);
+N  = numel(U)/nu;
+Z  = zeros(N*nz, 1);
+xk = x0;
+uk_prev = u_prev;
+Rz = r(:);
+J  = 0;
+for k = 1:N
+    uk = U((k-1)*nu + (1:nu));
+    xk = reactor_step(xk, uk, theta, mpc.par);
+    zk = mpc.Co*xk;
+    Z((k-1)*nz + (1:nz)) = zk;
+    du = uk - uk_prev;
+    J  = J + 0.5*((zk - Rz)'*mpc.Qz*(zk - Rz)) + 0.5*(uk'*mpc.Ru*uk) ...
+           + 0.5*(du'*mpc.Sdu*du);
+    uk_prev = uk;
+end
+if ~isfinite(J)
+    J = Inf;
+end
+end
