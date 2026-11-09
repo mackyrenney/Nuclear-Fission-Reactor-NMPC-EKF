@@ -18,6 +18,12 @@ switch solver
     [U, exitflag, iters, tsolve] = qp_solve_quadprog(H, g, A, lbA, ubA, lb, ub, U0, qp_alg);
 
 
+    case 2
+    % Hook for the custom optimization kernel
+
+        U        = U0;
+        exitflag = -99;
+        
     otherwise
         U        = U0;
         exitflag = -98;
