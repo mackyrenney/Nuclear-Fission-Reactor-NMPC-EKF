@@ -13,6 +13,14 @@ switch solver
     case 0
         [U, exitflag] = qp_solve_unconstrained(H, g, U0);
         iters = 1;
+
+    case 1
+    [U, exitflag, iters, tsolve] = qp_solve_quadprog(H, g, A, lbA, ubA, lb, ub, U0, qp_alg);
+
+
+    otherwise
+        U        = U0;
+        exitflag = -98;
 end
 end
 
