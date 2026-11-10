@@ -151,7 +151,8 @@ i.e. the model ignores that a change in the state also changes how strongly the 
 ---
 The Extended Kalman Filter is a joint state and parameter estimation filter. 
 
-The Measurement Update is given by:
+**Measurement Update**
+
 
 ``` matlab
 function [xbar_f, P_f, e, St] = EKF_MU(xbar_p, P_p, y, u_prev, ekf)
@@ -175,7 +176,8 @@ $$
 
 with innovation covariance $S_t = C P_{xx,t|t-1} C^T + C P_{x\theta,t|t-1} M^T + M P_{\theta x,t|t-1} C^T + M P_{\theta\theta,t|t-1} M^T + F F^T$.
 
-The Time Update is given by: 
+**Time Update**
+ 
 
 ``` matlab
 function [xbar_next, P_next] = EKF_TU(xbar_f, P_f, u, ekf)
@@ -193,7 +195,7 @@ $$
 \end{array}
 $$
 
-*Note on the Joseph Form*
+**Note on the Joseph Form**
 
 The Joseph Form covariance update is added to ensure nearly symmetric result: 
 
@@ -205,9 +207,19 @@ and the computationally cheaper option is implemented as the primary symmetric f
 
 **Nonlinear Model Predictive Controller**
 ---
-A semilinearization method was used to approach the NMPC
+NMPC determines the next control rod move $u_t = \rho_{ext,t}$ at each sample ($\Delta t$) via iterated semilinearization and each QP goes to a fixed solver (analytic, quadprog, or custom kernal). 
 
+**Files, Dependencies, and Toolboxes**
 
+**How the files connect**
+
+**Optimal Control Problem**
+
+**Quick Start**
+
+**Algorithm**
+
+**Output**
 
 **Reactor: Simulink Design**
 ---
