@@ -213,7 +213,19 @@ NMPC determines the next control rod move $u_t = \rho_{ext,t}$ at each sample ($
 
 **How the files connect**
 
-**Optimal Control Problem**
+**Control Problem**
+
+At each sample where $x_0=\hat x_{t|t}$ and $u_{-1}=u_{t-1}$ the minimization problem is formatted as:
+
+$$
+\min_{U}\ \frac{1}{2}\sum_{k=1}^{N}\lVert C_ox_k-r\rVert_{Q_z}^2
++\frac{1}{2}\sum_{k=0}^{N-1}\lVert u_k\rVert_{R_u}^2
++\frac{1}{2}\sum_{k=0}^{N-1}\lVert u_k-u_{k-1}\rVert_{S_{\Delta u}}^2
+\quad
+$$
+
+with optional bounds on $u_k$ and $u_k-u_{k-1}$ and specified variables, i.e. $N$, $Q_z$, $R_u$, $S_{\Delta u}$ are presented in settings. 
+
 
 **Quick Start**
 
