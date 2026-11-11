@@ -2,8 +2,6 @@ function [U, exitflag, iters, tsolve] = qp_solve(H, g, A, lbA, ubA, lb, ub, U0, 
 
 coder.extrinsic('qp_solve_quadprog');
 n = numel(g);
-
-% pre-declare outputs (required for extrinsic calls in MATLAB Function blocks)
 U        = zeros(n, 1);
 exitflag = 0;
 iters    = 0;
