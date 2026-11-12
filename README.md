@@ -10,7 +10,7 @@ This implementation uses MATLAB's Control System ToolBox, ran using MATLAB_R2025
 
 1. Open reactor_nmpc_ekf.slx Simulink 
 2. Run reactor_init.m file
-3. Adapt the model with ... and analyze structures results with ..read
+3. Adapt the model with ... and analyze structures results with ..
 
 **Process Model**
 ---
@@ -212,6 +212,8 @@ NMPC determines the next control rod move $u_t = \rho_{ext,t}$ at each sample ($
 **Files, Dependencies, and Toolboxes**
 
 **How the files connect**
+
+NMPC Simulink block --> nmpc_semilinear.m --> qp_solve.m --> qp_solve_unconstrained.m | qp_solve_quadprog.m | custom kernel
 
 **Control Problem**
 
