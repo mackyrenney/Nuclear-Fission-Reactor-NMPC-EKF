@@ -213,7 +213,8 @@ NMPC determines the next control rod move $u_t = \rho_{ext,t}$ at each sample ($
 
 **How the files connect**
 
-NMPC Simulink block --> nmpc_semilinear.m --> qp_solve.m --> qp_solve_unconstrained.m | qp_solve_quadprog.m | custom kernel
+<img width="616" height="503" alt="Screenshot 2026-11-17 at 11 52 06 AM" src="https://github.com/user-attachments/assets/ea8c910a-c60f-432d-a1fa-5203f29464c9" />
+
 
 **Control Problem**
 
