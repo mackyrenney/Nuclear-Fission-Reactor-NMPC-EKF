@@ -211,6 +211,8 @@ NMPC determines the next control rod move $u_t = \rho_{ext,t}$ at each sample ($
 
 **Files, Dependencies, and Toolboxes**
 
+C++ kernel solver is currently unfinished, so analytic or quadprog solvers are recommended.
+
 **How the files connect**
 
 <img width="616" height="503" alt="Screenshot 2026-11-17 at 11 52 06 AM" src="https://github.com/user-attachments/assets/ea8c910a-c60f-432d-a1fa-5203f29464c9" />
