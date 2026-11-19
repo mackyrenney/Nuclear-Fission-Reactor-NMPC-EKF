@@ -211,6 +211,8 @@ NMPC determines the next control rod move $u_t = \rho_{ext,t}$ at each sample ($
 
 **Files, Dependencies, and Toolboxes**
 
+Dependencies: reactor\_step.m, reactor\_jacobians.m, reactor\_fields.m, and the nmpc struct from reactor\_init.m
+
 C++ kernel solver is currently unfinished, so analytic or quadprog solvers are recommended.
 
 **How the files connect**
