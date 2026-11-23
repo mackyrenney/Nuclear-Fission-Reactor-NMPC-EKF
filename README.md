@@ -211,9 +211,13 @@ NMPC determines the next control rod move $u_t = \rho_{ext,t}$ at each sample ($
 
 **Files, Dependencies, and Toolboxes**
 
+Files: nmpc\_qp.m, nmpc\_semilinear.m, qp\_solve.m, qp\_solve\_analytic.m, and qp\_solve\_quadprog.m
+
 Dependencies: reactor\_step.m, reactor\_jacobians.m, reactor\_fields.m, and the nmpc struct from reactor\_init.m
 
-C++ kernel solver is currently unfinished, so analytic or quadprog solvers are recommended.
+Tool boxes: qp\_solve\_quadprog.m instances utilize MATLAB's OPTIMIZATION Toolbox
+
+Caveats: C++ kernel solver is currently unfinished, so analytic or quadprog solvers are recommended.
 
 **How the files connect**
 
